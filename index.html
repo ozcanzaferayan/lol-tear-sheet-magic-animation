@@ -10,29 +10,32 @@
       body {
         background-color: #000;
       }
+      :root {
+        --img-w: 1481px;
+        --img-h: 168px;
+        --anim-w: calc(var(--img-w) * 1);
+        --anim-h: calc(var(--img-h) * 1);
+      }
 
       .wrapper {
         position: relative;
-        width: 500px;
-        height: 168px;
+        width: 1000px;
+        height: 300px;
         overflow: hidden;
       }
 
       .bg {
         position: absolute;
-        width: 500%;
-        height: 300px;
+        width: calc(2 * var(--anim-w));
+        height: var(--anim-h);
         background: url(tearsheet.png) repeat-x;
-        background-size: 1481px 168px;
+        background-size: var(--anim-w) var(--anim-h);
         animation: bg-slide 2s linear infinite;
-        top: 0;
-        left: 0;
-        transform: rotate(180deg);
       }
 
       @keyframes bg-slide {
         from {
-          transform: translateX(-1481px);
+          transform: translateX(calc(-1 * var(--anim-w)));
         }
         to {
           transform: translateX(0px);
